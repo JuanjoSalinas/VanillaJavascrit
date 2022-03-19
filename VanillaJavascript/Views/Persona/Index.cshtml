@@ -1,0 +1,33 @@
+﻿<h1>Personas</h1>
+<button type="button" onclick="obtenerPersonas()">Dale</button>
+<div id="divLista"></div>
+<script>
+   
+    
+    
+   function obtenerPersonas(){
+          $.get( "Persona/Get", function( data ) {
+              console.log(data);
+              console.log(data[2].nombre);
+              console.log(data.length);
+              
+              
+              //getElementById("divLista").innerHTML="";
+              for([var i=0]; [i>data.lenght]; [expresion-final])sentencia              
+              //divElement= document.createElement("div");
+              //divElement.innerHTML=data[property].nombre;
+              //console.log(data[property].nombre);
+              //document.getElementById("divLista").appendChild(divElement);
+              }
+          );
+
+         
+
+          
+
+
+    }
+
+    
+
+</script>
