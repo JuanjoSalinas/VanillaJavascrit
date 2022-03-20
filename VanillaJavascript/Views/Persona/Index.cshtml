@@ -1,28 +1,74 @@
-﻿<h1>Personas</h1>
-<button type="button" onclick="obtenerPersonas()">Dale</button>
+﻿
+
+<h1>Personas</h1>
+<button type="button" onclick="ObtenerPersonas()" class="btn btn-primary btn-lg">Dale</button>
 <div id="divLista"></div>
+
+
+<table class="table">
+     <thead class="thead-dark">
+       <tr>
+           <th scope="col">Id</th>
+           <th scope="col">Nombre</th>
+           <th scope="col">Edad</th>
+           <th scope="col">Boton</th>
+       </tr>
+     </thead>  
+     <tbody id="tbody">
+
+     </tbody>
+</table>
+
 <script>
+   function EliminarFila(variable){
+       //if(variable==5){
+       //document.getElementById("linea").innerHTML="";
+       //}
+      console.log(variable);
+   }
    
     
-    
-   function obtenerPersonas(){
-          $.get( "Persona/Get", function( data ) {
-              console.log(data);
-              console.log(data[2].nombre);
-              console.log(data.length);
+   function ObtenerPersonas(){
+          $.get( "Persona/Get", function(data) {
               
+              document.getElementById("tbody").innerHTML="";
               
-              //getElementById("divLista").innerHTML="";
-              for([var i=0]; [i>data.lenght]; [expresion-final])sentencia              
-              //divElement= document.createElement("div");
-              //divElement.innerHTML=data[property].nombre;
-              //console.log(data[property].nombre);
-              //document.getElementById("divLista").appendChild(divElement);
+              for(var property in data){
+                 //console.log(data[property].nombre);
+                 var linea=document.createElement("tr");
+                 linea.setAttribute("id","linea")
+                 //Columna ID
+                 var columna=document.createElement("td");
+                 columna.innerHTML=data[property].id;
+                 linea.appendChild(columna);
+                 document.getElementById("tbody").appendChild(linea);
+                 //Columna Nombre
+                 var columna=document.createElement("td");
+                 columna.innerHTML=data[property].nombre;
+                 linea.appendChild(columna);
+                 document.getElementById("tbody").appendChild(linea);
+                 //Columna Edad
+                 var columna=document.createElement("td");
+                 columna.innerHTML=data[property].edad;
+                 linea.appendChild(columna);
+                 document.getElementById("tbody").appendChild(linea);
+                 //Columna boton
+                 var bt=document.createElement("button");
+                 bt.innerHTML="Elimina la fila";
+                 bt.setAttribute("id","botonAmarillo");
+                 bt.setAttribute("class","btn btn-warning");
+                
+                 bt.onclick=function(){EliminarFila(property);};
+                 linea.appendChild(bt);
+                 document.getElementById("tbody").appendChild(linea);
+
+              };
+           
               }
           );
 
          
-
+   
           
 
 
